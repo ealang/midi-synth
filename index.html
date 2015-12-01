@@ -42,6 +42,101 @@
     <div id="githubnotice"><a href="http://github.com/cwilso/midi-synth">Fork my code on Github</a></div>
     <div id="MIDIPlugin"></div>
 
+    <div id="saveload">
+        <div>
+            <button onclick="getSettings()">
+                Get
+            </button>
+            <button onclick="applySettings()">
+                Apply
+            </button>
+        </div>
+        <textarea id="save-data">
+        </textarea>
+    </div>
+    <script>
+    function getSettings() {
+        var settings = {
+            currentModWaveform: currentModWaveform,
+            currentModFrequency: currentModFrequency,
+            currentModOsc1: currentModOsc1,
+            currentModOsc2: currentModOsc2,
+
+            currentOsc1Waveform: currentOsc1Waveform,
+            currentOsc1Octave: currentOsc1Octave,
+            currentOsc1Detune: currentOsc1Detune,
+            currentOsc1Mix: currentOsc1Mix,
+
+            currentOsc2Waveform: currentOsc2Waveform,
+            currentOsc2Octave: currentOsc2Octave,
+            currentOsc2Detune: currentOsc2Detune,
+            currentOsc2Mix: currentOsc2Mix,
+
+            currentFilterCutoff: currentFilterCutoff,
+            currentFilterQ: currentFilterQ,
+            currentFilterMod: currentFilterMod,
+            currentFilterEnv: currentFilterEnv,
+
+            currentEnvA: currentEnvA,
+            currentEnvD: currentEnvD,
+            currentEnvS: currentEnvS,
+            currentEnvR: currentEnvR,
+
+            currentFilterEnvA: currentFilterEnvA,
+            currentFilterEnvD: currentFilterEnvD,
+            currentFilterEnvS: currentFilterEnvS,
+            currentFilterEnvR: currentFilterEnvR,
+
+            currentDrive: currentDrive,
+            currentRev: currentRev,
+            currentVol: currentVol,
+        };
+        document.getElementById("save-data").value = JSON.stringify(settings);
+    }
+    function applySettings() {
+        var settings = JSON.parse(document.getElementById("save-data").value);
+        currentModWaveform = settings.currentModWaveform;
+        currentModFrequency = settings.currentModFrequency;
+        currentModOsc1 = settings.currentModOsc1;
+        currentModOsc2 = settings.currentModOsc2;
+
+        currentOsc1Waveform = settings.currentOsc1Waveform;
+        currentOsc1Octave = settings.currentOsc1Octave;
+        currentOsc1Detune = settings.currentOsc1Detune;
+        currentOsc1Mix = settings.currentOsc1Mix;
+
+        currentOsc2Waveform = settings.currentOsc2Waveform;
+        currentOsc2Octave = settings.currentOsc2Octave;
+        currentOsc2Detune = settings.currentOsc2Detune;
+        currentOsc2Mix = settings.currentOsc2Mix;
+
+        currentFilterCutoff = settings.currentFilterCutoff;
+        currentFilterQ = settings.currentFilterQ;
+        currentFilterMod = settings.currentFilterMod;
+        currentFilterEnv = settings.currentFilterEnv;
+
+        currentEnvA = settings.currentEnvA;
+        currentEnvD = settings.currentEnvD;
+        currentEnvS = settings.currentEnvS;
+        currentEnvR = settings.currentEnvR;
+
+        currentFilterEnvA = settings.currentFilterEnvA;
+        currentFilterEnvD = settings.currentFilterEnvD;
+        currentFilterEnvS = settings.currentFilterEnvS;
+        currentFilterEnvR = settings.currentFilterEnvR;
+
+        currentDrive = settings.currentDrive;
+        currentRev = settings.currentRev;
+        currentVol = settings.currentVol;
+
+        while (synthbox.firstChild) {
+            synthbox.removeChild(synthbox.firstChild);
+        }
+        setupSynthUI();
+    }
+
+    </script>
+
 <!--
 <script type="text/javascript">
 
